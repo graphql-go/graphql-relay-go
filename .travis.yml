@@ -1,0 +1,9 @@
+language: go
+go:
+- 1.4
+- 1.5
+
+before_script:
+- go get github.com/graphql-go/graphql
+
+script: go test ./..
