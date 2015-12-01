@@ -1,6 +1,7 @@
 package relay
 
 import (
+	"fmt"
 	"github.com/graphql-go/graphql"
 )
 
@@ -25,14 +26,14 @@ func PluralIdentifyingRootField(config PluralIdentifyingRootFieldConfig) *graphq
 		Description: config.Description,
 		Type:        graphql.NewList(config.OutputType),
 		Args:        inputArgs,
-		Resolve: func(p graphql.ResolveParams) interface{} {
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
 			inputs, ok := p.Args[config.ArgName]
 			if !ok {
-				return nil
+				return nil, fmt.Errorf("Missing arg %q", config.ArgName)
 			}
 
 			if config.ResolveSingleInput == nil {
-				return nil
+				return nil, nil
 			}
 			switch inputs := inputs.(type) {
 			case []interface{}:
@@ -41,9 +42,9 @@ func PluralIdentifyingRootField(config PluralIdentifyingRootFieldConfig) *graphq
 					r := config.ResolveSingleInput(input)
 					res = append(res, r)
 				}
-				return res
+				return res, nil
 			}
-			return nil
+			return nil, fmt.Errorf("Can't handle %T", inputs)
 		},
 	}
 }
