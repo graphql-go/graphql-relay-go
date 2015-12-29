@@ -4,7 +4,7 @@ import (
 	"github.com/graphql-go/graphql"
 )
 
-type MutationFn func(inputMap map[string]interface{}, info graphql.ResolveInfo) map[string]interface{}
+type MutationFn func(inputMap map[string]interface{}, info graphql.ResolveInfo) (map[string]interface{}, error)
 
 /*
 A description of a mutation consumable by mutationWithClientMutationId
@@ -75,7 +75,10 @@ func MutationWithClientMutationID(config MutationConfig) *graphql.Field {
 					input = inputVal
 				}
 			}
-			payload := config.MutateAndGetPayload(input, p.Info)
+			payload, err := config.MutateAndGetPayload(input, p.Info)
+			if err != nil {
+				return nil, err
+			}
 			if clientMutationID, ok := input["clientMutationId"]; ok {
 				payload["clientMutationId"] = clientMutationID
 			}
