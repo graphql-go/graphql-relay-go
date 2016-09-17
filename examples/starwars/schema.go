@@ -118,9 +118,9 @@ func init() {
 				return nil, errors.New("Unknown node type")
 			}
 		},
-		TypeResolve: func(value interface{}, info graphql.ResolveInfo) *graphql.Object {
+		TypeResolve: func(p graphql.ResolveTypeParams) *graphql.Object {
 			// based on the type of the value, return GraphQLObjectType
-			switch value.(type) {
+			switch p.Value.(type) {
 			case *Faction:
 				return factionType
 			default:
