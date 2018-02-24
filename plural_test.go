@@ -2,14 +2,15 @@ package relay_test
 
 import (
 	"fmt"
+	"reflect"
+	"testing"
+
 	"github.com/graphql-go/graphql"
 	"github.com/graphql-go/graphql/gqlerrors"
 	"github.com/graphql-go/graphql/language/location"
 	"github.com/graphql-go/graphql/testutil"
 	"github.com/graphql-go/relay"
 	"github.com/kr/pretty"
-	"reflect"
-	"testing"
 )
 
 var pluralTestUserType = graphql.NewObject(graphql.ObjectConfig{

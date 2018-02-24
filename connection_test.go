@@ -1,11 +1,12 @@
 package relay_test
 
 import (
+	"reflect"
+	"testing"
+
 	"github.com/graphql-go/graphql"
 	"github.com/graphql-go/graphql/testutil"
 	"github.com/graphql-go/relay"
-	"reflect"
-	"testing"
 )
 
 var connectionTestAllUsers = []interface{}{
