@@ -1,0 +1,15 @@
+[[constraint]]
+  name = "github.com/graphql-go/graphql"
+  version = "0.7.5"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/graphql-go/relay"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/kr/pretty"
+
+[[constraint]]
+  branch = "master"
+  name = "golang.org/x/net"
