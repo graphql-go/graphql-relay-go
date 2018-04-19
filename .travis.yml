@@ -15,7 +15,7 @@ before_install:
 
 script:
   #  - golint `go list ./... | grep -v /vendor/`;
-  - go vet ./...;
+  - go vet `go list ./... | grep -v /vendor/`;
   - go test -race -parallel 50 -v ./...
   - go clean && go build -ldflags="-s -w";
   - $GOPATH/bin/goveralls -service=travis-ci
