@@ -106,7 +106,7 @@ func ConnectionDefinitions(config ConnectionConfig) *GraphQLConnectionDefinition
 			},
 			"edges": &graphql.Field{
 				Type:        graphql.NewList(edgeType),
-				Description: "Information to aid in pagination.",
+				Description: "A list of edges.",
 			},
 		},
 	})
