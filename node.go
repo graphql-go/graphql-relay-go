@@ -1,12 +1,13 @@
 package relay
 
 import (
+	"context"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"github.com/graphql-go/graphql"
-	"golang.org/x/net/context"
 	"strings"
+
+	"github.com/graphql-go/graphql"
 )
 
 type NodeDefinitions struct {
